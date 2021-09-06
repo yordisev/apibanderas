@@ -24,8 +24,9 @@ Card
            return store.getters.topPaisesPoblacion
         //    return store.state.paises
         })
-        onMounted(() =>{
-            store.dispatch('getPaises')
+        onMounted(async () =>{
+           await store.dispatch('getPaises')
+          await  store.dispatch('filtrarRegion','Americas')
         })
         return {paises}
     }
