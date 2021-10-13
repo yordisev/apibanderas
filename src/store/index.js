@@ -16,8 +16,8 @@ export default createStore({
     actions: {
         async getPaises({ commit }) {
             try {
-                // const respuesta = await fetch('https://restcountries.eu/rest/v2/all')
-                const respuesta = await fetch('api.json')
+                const respuesta = await fetch('https://restcountries.com/v3.1/all')
+                // const respuesta = await fetch('api.json')
                 const datos = await respuesta.json()
                 console.log(datos)
                 commit('setPaises', datos)
@@ -37,7 +37,7 @@ export default createStore({
         buscarpornombre({ commit, state }, nombrepais) {
             const textoCliente = nombrepais.toLowerCase()
             const filtro = state.paises.filter(pais => {
-                const textoApi = pais.name.toLowerCase()
+                const textoApi = pais.name.common.toLowerCase()
                 if (textoApi.includes(textoCliente)) {
                     return pais
                 }
